@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(251, 253, 255);
+  font-family: "Roboto", sans-serif;
+}
+
+.grid_wrap {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(320px, 1440px));
+  justify-content: center;
+}
+
+.none {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: underline;
+  color: rgb(251, 253, 255);
+}
+
+input:not([type=submit]) {
+  color: #181818;
+  background: rgb(251, 253, 255);
+  border: 1px solid #B2ABB2;
+  height: 42px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+input:not([type=submit])::placeholder {
+  color: #16161a;
+}
+
+.h1 {
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(251, 253, 255);
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 85%;
+}
+
+.order_label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.orders {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.order {
+  width: 100%;
+  margin-top: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.order div {
+  width: 100%;
+}
+.order .wrap_text > div {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  text-align: right;
+  justify-content: start;
+  flex-direction: row;
+}
+.order .wrap_text > div div:first-child {
+  text-align: start;
+}
+
+.more, .complete_button, select {
+  margin-left: 30px;
+  color: #16161a;
+  background: white;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  height: 35px !important;
+  border-color: #16161a !important;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.complete_button {
+  border-color: #00b600 !important;
+}
+
+.completed {
+  border-color: #b2b2b2 !important;
+  pointer-events: none;
+  cursor: default;
+  color: #a6a5a5;
+}
+
+@media (min-width: 771px) {
+  .order {
+    flex-direction: row;
+  }
+}
+@media (max-width: 770px) {
+  .order {
+    flex-direction: column;
+  }
+  .order a {
+    width: 100%;
+  }
+  .order button {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

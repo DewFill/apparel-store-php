@@ -1,0 +1,33 @@
+@use "../../../../static/additional_styles/Colors" as *;
+@use "../../../../static/additional_styles/Objects" as *;
+
+#old_password, #new_password, #new_password_repeat, #change_password_button {
+  margin-left: 0;
+  @include Buttons(white, $menu_fon, 100%);
+  border-color: $menu_fon !important;
+  width: fit-content;
+  padding: 10px 15px 10px 15px;
+  height: auto;
+}
+
+#change_password_form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    margin-top: 10px;
+    span {
+      color: red;
+    }
+  }
+
+  input {
+    cursor: text;
+  }
+
+  #change_password_button {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,118 @@
+@use "../additional_styles/Objects" as *;
+@use "../additional_styles/Colors" as *;
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+.order_label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.orders {
+  width: max-content;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.order {
+  a {
+    width: 100%;
+
+    button {
+      width: 100% !important;
+    }
+  }
+
+  width: 100%;
+  //width: fit-content;
+  margin-top: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+
+  div {
+    //padding-left: 10px;
+    //padding-right: 10px;
+    width: 100%;
+
+  }
+
+  .wrap_text {
+    margin-right: 20px;
+    //width: max-content;
+    //border: 1px solid red;
+  }
+
+  .wrap_text > div {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    text-align: right;
+    justify-content: start;
+    flex-direction: row;
+  }
+
+  .wrap_text > div div:first-child {
+    text-align: start;
+    padding-right: 20px;
+  }
+
+  .wrap_text > div div:last-child {
+    white-space: nowrap;
+    width: 100%;
+    //border: 1px solid red;
+  }
+
+
+}
+
+.order a button {
+  width: 80% !important;
+  margin-left: 30px !important;
+  @include Buttons(white, $menu_fon, 100%);
+  height: 35px !important;
+  border-color: $menu_fon !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+@media (min-width: 771px) {
+  .order {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 770px) {
+  .order {
+    flex-direction: column;
+
+    a {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+
+  }
+}

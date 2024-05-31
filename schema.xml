@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="\DB" defaultPhpNamingMethod="underscore">
+  <table name="brands" idMethod="native" phpName="Brands">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="cart_products" idMethod="native" phpName="CartProducts">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_id" phpName="UserId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="size_id" phpName="SizeId" type="INTEGER" sqlType="int unsigned"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" sqlType="int unsigned" required="true" defaultValue="1"/>
+    <foreign-key foreignTable="users" name="cart_products_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="products" name="cart_products_ibfk_2" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="product_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="product_sizes" name="cart_products_ibfk_3" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="size_id" foreign="id"/>
+    </foreign-key>
+    <index name="user_id">
+      <index-column name="user_id"/>
+    </index>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <index name="cart_products_ibfk_3">
+      <index-column name="size_id"/>
+    </index>
+    <unique name="user_product_size">
+      <unique-column name="user_id"/>
+      <unique-column name="product_id"/>
+      <unique-column name="size_id"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="categories" idMethod="native" phpName="Categories">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <unique name="name">
+      <unique-column name="name"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="order_products" idMethod="native" phpName="OrderProducts">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="size_id" phpName="SizeId" type="INTEGER" sqlType="int unsigned"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <foreign-key foreignTable="orders" name="order_products_ibfk_1" onDelete="CASCADE" onUpdate="RESTRICT">
+      <reference local="order_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="products" name="order_products_ibfk_2" onDelete="CASCADE" onUpdate="RESTRICT">
+      <reference local="product_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="product_sizes" name="order_products_ibfk_3" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="size_id" foreign="id"/>
+    </foreign-key>
+    <index name="order_products_ibfk_1">
+      <index-column name="order_id"/>
+    </index>
+    <index name="order_products_ibfk_2">
+      <index-column name="product_id"/>
+    </index>
+    <index name="size_id">
+      <index-column name="size_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="orders" idMethod="native" phpName="Orders">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_id" phpName="UserId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="address" phpName="Address" type="VARCHAR" size="255" required="true"/>
+    <column name="full_name" phpName="FullName" type="VARCHAR" size="255" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="255" required="true"/>
+    <column name="delivery_name" phpName="DeliveryName" type="VARCHAR" size="255" required="true"/>
+    <column name="delivery_price" phpName="DeliveryPrice" type="DECIMAL" size="10" scale="2" required="true"/>
+    <column name="status" phpName="Status" type="CHAR" sqlType="set('placed','completed')" required="true" defaultValue="placed"/>
+    <column name="date" phpName="Date" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <foreign-key foreignTable="users" name="orders_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <index name="orders_ibfk_1">
+      <index-column name="user_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="product_categories" idMethod="native" phpName="ProductCategories">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="category_id" phpName="CategoryId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <foreign-key foreignTable="categories" name="product_categories_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="category_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="products" name="product_categories_ibfk_2" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="product_id" foreign="id"/>
+    </foreign-key>
+    <index name="product_categories_ibfk_1">
+      <index-column name="category_id"/>
+    </index>
+    <unique name="product_category">
+      <unique-column name="product_id"/>
+      <unique-column name="category_id"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="product_images" idMethod="native" phpName="ProductImages">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="image" phpName="Image" type="LONGVARBINARY" required="true"/>
+    <foreign-key foreignTable="products" name="product_images_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="product_id" foreign="id"/>
+    </foreign-key>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="product_rating" idMethod="native" phpName="ProductRating">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="user_id" phpName="UserId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="rating" phpName="Rating" type="CHAR" sqlType="set('1','2','3','4','5')" required="true" defaultValue=""/>
+    <foreign-key foreignTable="users" name="product_rating_ibfk_2" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="products" name="product_rating_ibfk_3" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="product_id" foreign="id"/>
+    </foreign-key>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <index name="user_id">
+      <index-column name="user_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="product_sizes" idMethod="native" phpName="ProductSizes">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="size" phpName="Size" type="CHAR" sqlType="set('xs','s','m','l','xl','xxl','3xl')" required="true"/>
+    <foreign-key foreignTable="products" name="product_sizes_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="product_id" foreign="id"/>
+    </foreign-key>
+    <unique name="product_size">
+      <unique-column name="product_id"/>
+      <unique-column name="size"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="products" idMethod="native" phpName="Products">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <column name="article" phpName="Article" type="BIGINT"/>
+    <column name="brand_id" phpName="BrandId" type="INTEGER" sqlType="int unsigned"/>
+    <column name="price" phpName="Price" type="DECIMAL" size="10" scale="2" sqlType="decimal(10,2) unsigned" required="true"/>
+    <column name="discount_price" phpName="DiscountPrice" type="DECIMAL" size="10" scale="2" sqlType="decimal(10,2) unsigned"/>
+    <column name="description" phpName="Description" type="VARCHAR" size="255"/>
+    <column name="copmosition" phpName="Copmosition" type="VARCHAR" size="255" description="состав"/>
+    <column name="main_image" phpName="MainImage" type="LONGVARBINARY" required="true"/>
+    <column name="background_color" phpName="BackgroundColor" type="VARCHAR" description="цвет подложки товара"/>
+    <foreign-key foreignTable="brands" name="products_ibfk_1" onDelete="SET NULL" onUpdate="CASCADE">
+      <reference local="brand_id" foreign="id"/>
+    </foreign-key>
+    <index name="brand_id">
+      <index-column name="brand_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="slides" idMethod="native" phpName="Slides">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="image" phpName="Image" type="LONGVARBINARY" description="base 64 изображение" required="true"/>
+    <column name="url" phpName="Url" type="VARCHAR" size="255" description="ссылка при нажатии на слайд"/>
+    <column name="active" phpName="Active" type="BOOLEAN" size="1" description="1 - слайд показывается; 0 - слайд скрыт" required="true" defaultValue="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="user_adresses" idMethod="native" phpName="UserAdresses">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_id" phpName="UserId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="region" phpName="Region" type="VARCHAR" size="255" description="регион" required="true"/>
+    <column name="city" phpName="City" type="VARCHAR" size="255" description="город" required="true"/>
+    <column name="district" phpName="District" type="VARCHAR" size="255" description="район" required="true"/>
+    <column name="street" phpName="Street" type="VARCHAR" size="255" description="улица" required="true"/>
+    <column name="zip_code" phpName="ZipCode" type="VARCHAR" size="255" description="индекс" required="true"/>
+    <column name="house" phpName="House" type="VARCHAR" size="255" description="номер дома" required="true"/>
+    <column name="apartment" phpName="Apartment" type="VARCHAR" size="255" description="номер квартиры"/>
+    <foreign-key foreignTable="users" name="user_adresses_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <index name="user_adresses_ibfk_1">
+      <index-column name="user_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="user_favorites" idMethod="native" phpName="UserFavorites">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_id" phpName="UserId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <foreign-key foreignTable="users" name="user_favorites_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key foreignTable="products" name="user_favorites_ibfk_2" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="product_id" foreign="id"/>
+    </foreign-key>
+    <index name="user_id">
+      <index-column name="user_id"/>
+    </index>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <unique name="user_product">
+      <unique-column name="product_id"/>
+      <unique-column name="user_id"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="users" idMethod="native" phpName="Users">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="main_address_id" phpName="MainAddressId" type="INTEGER" sqlType="int unsigned"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="249" required="true"/>
+    <column name="password" phpName="Password" type="VARCHAR" size="255" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255"/>
+    <column name="surname" phpName="Surname" type="VARCHAR" size="255"/>
+    <column name="patronymic" phpName="Patronymic" type="VARCHAR" size="255"/>
+    <column name="phone_number" phpName="PhoneNumber" type="VARCHAR" size="255"/>
+    <column name="birthday" phpName="Birthday" type="DATE"/>
+    <column name="gender" phpName="Gender" type="CHAR" sqlType="set('man','woman')"/>
+    <column name="username" phpName="Username" type="VARCHAR" size="100"/>
+    <column name="status" phpName="Status" type="TINYINT" sqlType="tinyint unsigned" required="true" defaultValue="0"/>
+    <column name="verified" phpName="Verified" type="TINYINT" sqlType="tinyint unsigned" required="true" defaultValue="0"/>
+    <column name="resettable" phpName="Resettable" type="TINYINT" sqlType="tinyint unsigned" required="true" defaultValue="1"/>
+    <column name="roles_mask" phpName="RolesMask" type="INTEGER" sqlType="int unsigned" required="true" defaultValue="0"/>
+    <column name="registered" phpName="Registered" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="last_login" phpName="LastLogin" type="INTEGER" sqlType="int unsigned"/>
+    <column name="force_logout" phpName="ForceLogout" type="SMALLINT" sqlType="mediumint unsigned" required="true" defaultValue="0"/>
+    <foreign-key foreignTable="user_adresses" name="users_ibfk_1" onDelete="SET NULL" onUpdate="CASCADE">
+      <reference local="main_address_id" foreign="id"/>
+    </foreign-key>
+    <index name="users_ibfk_1">
+      <index-column name="main_address_id"/>
+    </index>
+    <unique name="email">
+      <unique-column name="email"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="users_confirmations" idMethod="native" phpName="UsersConfirmations">
+    <column name="id" phpName="Id" type="INTEGER" sqlType="int unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_id" phpName="UserId" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="249" required="true"/>
+    <column name="selector" phpName="Selector" type="VARCHAR" size="16" required="true"/>
+    <column name="token" phpName="Token" type="VARCHAR" size="255" required="true"/>
+    <column name="expires" phpName="Expires" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <index name="email_expires">
+      <index-column name="email"/>
+      <index-column name="expires"/>
+    </index>
+    <index name="user_id">
+      <index-column name="user_id"/>
+    </index>
+    <unique name="selector">
+      <unique-column name="selector"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="users_remembered" idMethod="native" phpName="UsersRemembered">
+    <column name="id" phpName="Id" type="BIGINT" sqlType="bigint unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user" phpName="User" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="selector" phpName="Selector" type="VARCHAR" size="24" required="true"/>
+    <column name="token" phpName="Token" type="VARCHAR" size="255" required="true"/>
+    <column name="expires" phpName="Expires" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <index name="user">
+      <index-column name="user"/>
+    </index>
+    <unique name="selector">
+      <unique-column name="selector"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="users_resets" idMethod="native" phpName="UsersResets">
+    <column name="id" phpName="Id" type="BIGINT" sqlType="bigint unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user" phpName="User" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="selector" phpName="Selector" type="VARCHAR" size="20" required="true"/>
+    <column name="token" phpName="Token" type="VARCHAR" size="255" required="true"/>
+    <column name="expires" phpName="Expires" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <index name="user_expires">
+      <index-column name="user"/>
+      <index-column name="expires"/>
+    </index>
+    <unique name="selector">
+      <unique-column name="selector"/>
+    </unique>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="users_throttling" idMethod="native" phpName="UsersThrottling">
+    <column name="bucket" phpName="Bucket" type="VARCHAR" size="44" primaryKey="true" required="true"/>
+    <column name="tokens" phpName="Tokens" type="FLOAT" sqlType="float unsigned" required="true"/>
+    <column name="replenished_at" phpName="ReplenishedAt" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <column name="expires_at" phpName="ExpiresAt" type="INTEGER" sqlType="int unsigned" required="true"/>
+    <index name="expires_at">
+      <index-column name="expires_at"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+</database>

@@ -1,0 +1,100 @@
+@use "../../additional_styles/Objects" as *;
+@use "../../additional_styles/Colors" as *;
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 85%;
+}
+
+.order_label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.orders {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.order {
+  width: 100%;
+  margin-top: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+
+  div {
+    width: 100%;
+
+  }
+
+  .wrap_text > div {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    text-align: right;
+    justify-content: start;
+    flex-direction: row;
+  }
+
+  .wrap_text > div div:first-child {
+    text-align: start;
+  }
+
+}
+
+.more, .complete_button, select {
+  margin-left: 30px;
+  @include Buttons(white, $menu_fon, 100%);
+  height: 35px !important;
+  border-color: $menu_fon !important;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.complete_button {
+  border-color: #00b600 !important;
+}
+
+.completed {
+  //margin-top: 20px;
+  border-color: #b2b2b2 !important;
+  pointer-events: none;
+  cursor: default;
+  color: #a6a5a5;
+}
+
+@media (min-width: 771px) {
+  .order {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 770px) {
+  .order {
+    flex-direction: column;
+
+    a {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

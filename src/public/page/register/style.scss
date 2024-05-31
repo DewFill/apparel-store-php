@@ -1,0 +1,92 @@
+@use "../additional_styles/Colors" as *;
+@use "../additional_styles/Objects" as *;
+
+body {
+  background: $menu_fon;
+  overflow: hidden;
+}
+
+.grid_wrap_sign {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(320px, 1fr));
+  grid-template-rows: repeat(1, minmax(360px, 100vh));
+  justify-content: center;
+}
+
+.main_wrap {
+  p {
+    color: $white;
+  }
+
+  height: 100vh;
+
+  .image {
+    height: 100vh;
+    background-size: cover;
+
+    img {
+      object-fit: cover;
+      height: 100vh;
+      width: 50vw;
+    }
+  }
+
+  .auth_form {
+    padding-top: 5%;
+    @include flex(column, normal, center);
+
+    .h1 {
+      margin-bottom: 30px;
+    }
+
+    img {
+      width: 130px;
+      height: 130px;
+      margin-bottom: 50px;
+    }
+
+    form {
+      height: auto;
+      margin: 0 10px;
+      @include flex(column, normal, flex-start);
+
+      input {
+        margin-bottom: 20px;
+      }
+
+      .link {
+        margin-bottom: 20px;
+      }
+
+      #auth_btn {
+        @include Buttons($red, $white, 100%);
+      }
+    }
+  }
+}
+
+//************ Media queries **********//
+@media (min-width: 1201px) {
+  .main_wrap {
+    @include flex(row, space-between, normal);
+  }
+  .auth_form {
+    width: 55%;
+
+    form {
+      width: 360px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .main_wrap {
+    @include flex(row, center, normal);
+  }
+  .image {
+    display: none;
+  }
+  form {
+    max-width: 25rem;
+  }
+}

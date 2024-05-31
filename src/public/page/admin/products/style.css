@@ -1,0 +1,81 @@
+main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product_add_wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+
+.grid_wrap {
+    display: flex;
+}
+
+.product_form label input {
+    padding-left: 0;
+    width: 100%;
+}
+
+.product_form label > span {
+    color: red;
+}
+
+.product_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+select, textarea, input, .size_add_button, .categories_add_button, .delete_product_button {
+    resize: vertical;
+    color: #181818;
+    background: #fbfdff;
+    border: 1px solid #B2ABB2;
+    height: 42px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+input[type='submit'] {
+    cursor: pointer;
+    margin-top: 10px;
+    border: 1px solid green;
+
+}
+
+.flex_wrap .wrap_card {
+    width: 100%;
+}
+
+.button_add_product_to_cart {
+    pointer-events: none;
+    border-color: #B2ABB2 !important;
+
+}
+
+@media screen and (max-width: 500px) {
+     main {
+        overflow-x: hidden;
+    }
+    .product_form {
+        width: 100%;
+    }
+
+    .product_add_container {
+        width: 85%;
+    }
+
+    .grid_wrap {
+        display: none;
+    }
+}

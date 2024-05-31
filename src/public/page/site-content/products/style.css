@@ -1,0 +1,264 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(251, 253, 255);
+  font-family: "Roboto", sans-serif;
+}
+
+.grid_wrap {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(320px, 1440px));
+  justify-content: center;
+}
+
+.none {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: underline;
+  color: rgb(251, 253, 255);
+}
+
+input:not([type=submit]) {
+  color: #181818;
+  background: rgb(251, 253, 255);
+  border: 1px solid #B2ABB2;
+  height: 42px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+input:not([type=submit])::placeholder {
+  color: #16161a;
+}
+
+.h1 {
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(251, 253, 255);
+}
+
+.flex_wrap {
+  margin-top: 20px;
+  margin-bottom: 120px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 17.5rem));
+  justify-content: center;
+  grid-column-gap: 105px;
+  grid-row-gap: 50px;
+}
+.flex_wrap .wrap_card {
+  width: 17.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flex_wrap .wrap_card .bl_image {
+  position: relative;
+}
+.flex_wrap .wrap_card .bl_image img {
+  object-fit: contain;
+  width: 100%;
+  height: 260px;
+}
+.flex_wrap .wrap_card .bl_image span {
+  z-index: 3 !important;
+  display: block;
+}
+.flex_wrap .wrap_card .bl_image .sale {
+  width: 150px;
+  height: 30px;
+  background: rgba(251, 253, 255, 0.5);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 5px;
+  text-align: center;
+  line-height: 30px;
+}
+.flex_wrap .wrap_card .bl_image .sale .procent {
+  font-size: 18px;
+  color: #CF1B24;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.flex_wrap .wrap_card .bl_image .heart {
+  width: 30px;
+  height: 30px;
+  background: url("/static/image/icon_product/empty_heart_41px.svg") no-repeat center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-size: contain;
+  cursor: pointer;
+}
+.flex_wrap .wrap_card .bl_image .heart:active {
+  background: url("/static/image/icon_product/red_heart_41px.svg") no-repeat center;
+  background-size: contain;
+}
+.flex_wrap .wrap_card .bl_image .heart_active {
+  width: 30px;
+  height: 30px;
+  background: url("/static/image/icon_product/red_heart_41px.svg") no-repeat center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-size: contain;
+  cursor: pointer;
+}
+.flex_wrap .wrap_card .bl_image .heart_active:active {
+  background: url("/static/image/icon_product/empty_heart_41px.svg") no-repeat center;
+  background-size: contain;
+}
+.flex_wrap .wrap_card .bl_text {
+  width: 100%;
+  margin: 10px 0 15px 15px;
+}
+.flex_wrap .wrap_card .bl_text .brand {
+  display: block;
+  height: 1em;
+  font-style: italic;
+  color: black;
+  margin-bottom: 10px;
+}
+.flex_wrap .wrap_card .bl_text > * {
+  margin-bottom: 10px;
+}
+.flex_wrap .wrap_card .bl_text .name {
+  font-weight: bold;
+  color: black;
+  height: 2.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.flex_wrap .wrap_card .bl_text .stars {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex_wrap .wrap_card .bl_text .stars .star_icon {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5rem;
+  background: url("/static/image/icon_product/gray_star.svg") no-repeat center;
+  background-size: contain;
+}
+.flex_wrap .wrap_card .bl_text .stars .star_icon:hover {
+  background: url("/static/image/icon_product/yellow_star.svg") no-repeat center;
+  background-size: contain;
+}
+.flex_wrap .wrap_card .bl_text .price {
+  height: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex_wrap .wrap_card .bl_text .price span {
+  display: inline;
+}
+.flex_wrap .wrap_card .bl_text .price .red_price {
+  color: black;
+}
+.flex_wrap .wrap_card .bl_text .price .old_price {
+  font-size: 0.8em;
+  opacity: 0.8;
+  color: #8f8f8f;
+  margin-left: 20px;
+  text-decoration: line-through;
+}
+.flex_wrap .wrap_card .bl_btn {
+  width: 100%;
+}
+.flex_wrap .wrap_card .bl_btn .size_buttons {
+  gap: 5px;
+  display: flex;
+}
+.flex_wrap .wrap_card .bl_btn button {
+  color: #16161a;
+  background: white;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  height: 40px !important;
+  border-color: #16161a !important;
+}
+
+.rating-area {
+  overflow: hidden;
+  width: 210px;
+}
+
+.rating-area:not(:checked) > input {
+  display: none;
+}
+
+.rating-area:not(:checked) > label {
+  float: right;
+  width: 42px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 32px;
+  color: #C4C4C4;
+}
+
+.rating-area:not(:checked) > label:before {
+  content: "★";
+}
+
+.rating-area > input:checked ~ label {
+  color: #ffed00;
+}
+
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+  color: #ffed00;
+}
+
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+  color: #ffed00;
+}
+
+.rate-area > label:active {
+  position: relative;
+}
+
+.user_rated > input:checked ~ label {
+  color: #ffbf00 !important;
+}
+
+.not_enough_ratings:not(:checked) > label {
+  color: rgb(234, 234, 234);
+}
+
+/*# sourceMappingURL=style.css.map */

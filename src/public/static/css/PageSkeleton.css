@@ -1,0 +1,53 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  margin: 0 auto 40px auto;
+  max-width: 1700px;
+  min-height: 100vh;
+  height: fit-content;
+}
+
+.skeleton-loader {
+  box-shadow: 0 4px 10px 0 rgba(33, 33, 33, 0.15);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, strong {
+  cursor: default;
+}
+
+a, a > h2 {
+  cursor: pointer;
+}
+
+.skeleton-loader::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -150px;
+  top: 0;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(to right, transparent 0%, #E8E8E8 50%, transparent 100%);
+  animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes load {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/*# sourceMappingURL=PageSkeleton.css.map */

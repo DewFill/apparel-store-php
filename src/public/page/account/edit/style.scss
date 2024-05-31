@@ -1,0 +1,101 @@
+@use "../../../static/additional_styles/Colors" as *;
+@use "../../../static/additional_styles/Objects" as *;
+
+main {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+#edit_account_form {
+  width: fit-content;
+  gap: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.columns {
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  width: 100%;
+}
+
+.column > .block {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 15px;
+}
+
+.address_input {
+  display: flex;
+  flex-flow: row;
+
+  #main_address {
+    width: 100%;
+    color: #181818;
+    background: rgb(251, 253, 255);
+    border: 1px solid #B2ABB2;
+    height: 42px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+
+  }
+}
+
+label span {
+  color: red;
+}
+
+@media screen and (max-width: 525px) {
+
+  .columns {
+    flex-flow: column nowrap;
+    gap: 0;
+  }
+
+  .address_input {
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  #main_address {
+    padding: 0;
+  }
+}
+
+.button_container {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#save_data_button, #add_new_address_button {
+  margin-left: 0;
+  @include Buttons(white, $menu_fon, 100%);
+  border-color: $menu_fon !important;
+  width: fit-content;
+  padding: 10px 15px 10px 15px;
+  height: auto;
+}
+
+#add_new_address_a{
+  width: 100%;
+}
+#add_new_address_button {
+  width: 100%;
+}

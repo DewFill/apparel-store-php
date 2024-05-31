@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(251, 253, 255);
+  font-family: "Roboto", sans-serif;
+}
+
+.grid_wrap {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(320px, 1440px));
+  justify-content: center;
+}
+
+.none {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: underline;
+  color: rgb(251, 253, 255);
+}
+
+input:not([type=submit]) {
+  color: #181818;
+  background: rgb(251, 253, 255);
+  border: 1px solid #B2ABB2;
+  height: 42px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+input:not([type=submit])::placeholder {
+  color: #16161a;
+}
+
+.h1 {
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(251, 253, 255);
+}
+
+.wrap_footer {
+  z-index: 1000;
+  width: 100%;
+  height: auto;
+  background: #16161a;
+  height: 300px;
+  padding-top: 50px;
+  color: white;
+  display: grid;
+  grid-template-columns: 0.8fr;
+  justify-content: center;
+}
+.wrap_footer .main_footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: normal;
+}
+.wrap_footer .main_footer .section_menu {
+  margin-right: 100px;
+}
+.wrap_footer .main_footer .name_help {
+  font-weight: bold;
+  font-size: 18px;
+}
+.wrap_footer .main_footer .links_foot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: normal;
+}
+.wrap_footer .main_footer .links_foot > a {
+  margin-top: 1.2rem;
+}
+.wrap_footer .main_footer .follow_us {
+  margin-left: auto;
+}
+.wrap_footer .main_footer .follow_us > * {
+  margin-bottom: 40px;
+}
+.wrap_footer .main_footer .know_more {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: center;
+}
+.wrap_footer .main_footer .know_more .arrow_next {
+  display: block;
+  width: 50px;
+  height: 40px;
+  background: url("/static/image/icon_product/arrow_left_ico.svg") no-repeat center;
+}
+.wrap_footer .copiright {
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 1100px) and (min-width: 768px) {
+  .wrap_footer {
+    height: 30px;
+  }
+  .wrap_footer .main_footer > * {
+    display: none;
+  }
+}
+@media screen and (max-width: 786px) {
+  main {
+    margin-bottom: 120px;
+  }
+
+  .wrap_footer {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

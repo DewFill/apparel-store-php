@@ -1,0 +1,254 @@
+@use "../additional_styles/Objects" as *;
+@use "../additional_styles/Colors" as *;
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(320px, 100%));
+    justify-content: center;
+}
+.search{
+    input{ 
+        padding-left: 40px !important;
+        &::placeholder{
+            color: $menu_fon;
+        }
+    }
+    label{
+        position: relative;
+    }
+    span{
+        width: 25px;
+        height: 25px;
+        display: block;
+        position: absolute;       
+    }
+    .icon_loop{
+        background: url('../images/icon_menu/loupe.svg') no-repeat center;
+    }
+    .icon_cross{            
+        transform: rotate(45deg);
+        background: url('../images/icon_product/cross.svg') no-repeat center;
+    }
+}
+
+
+
+//* ================== down menu =================
+.show_menu{
+    @include flex(none, center, none);
+}
+.wrap_down_menu{
+    display: none;
+    width: 100%;
+    background: $menu_fon;
+    height: auto;
+    padding: 40px 0;   
+    border-top: 1px solid white;      
+
+    .down_menu{
+        width: 75%;
+        @include flex(row, space-between, center);
+    
+        .name_section{
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        .sect{   
+            display: none;
+            width: 70%;    
+            margin-bottom: 2rem;     
+            .links_bar{
+                @include flex(row, space-between, normal);
+            }
+            .name_section{
+                margin-bottom: 20px;
+            }
+            .group{
+                @include flex(column, space-between, normal);
+                &>a{
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    
+        .advertisement{
+            @include flex(column, center, center);
+            span{
+                color: white;
+                padding: 15px 0;
+                width: 180px;
+                text-align: center;
+                background: $red;
+                margin-bottom: 1rem;
+                transition: box-shadow 0.2s ease-in-out;
+                cursor: pointer;
+                box-shadow: -5px 5px 5px rgba(61, 36, 29, 0.5);
+                &:hover{
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+
+//* ============ media ================
+
+@media screen and (min-width: 1101px) {
+    .desktop_wrap{
+        margin-bottom: 50px;
+        background: $menu_fon;
+        padding: 1.5rem 0;
+        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(7, 15%);
+        grid-template-rows: repeat(2, auto);
+        gap:20px;
+
+        .search{
+            grid-area: 1 / 2 / 2 / 4;    
+            input{ max-width: 100%;}
+            span{  top: -3px; }
+            .icon_cross{            
+                right: 10px;
+            }
+            .icon_loop{
+                left: 10px;
+            }
+        }
+        .logo{       
+            grid-area: 1 / 4 / 2 / 5;
+            @include flex(row, center, center);
+            img{
+                width: 80px;
+                object-fit: contain;
+            }
+        }
+        .icons_menu{
+            grid-area: 1 / 5 / 2 / 7;
+            @include flex(row, flex-end, stretch);
+            span{
+                display: block;
+                width: 30px;
+                height: 30px;
+                margin-left: 1.5rem;            
+            }
+            &:first-child{ margin-left: 0; }
+            .edited_link{
+                width: 70px !important;
+                background: url('../images/icon_menu/logo-edited.svg') no-repeat center;
+            }
+            .bag_link{
+                background: url('../images/icon_menu/bag.svg') no-repeat center;
+            }
+            .heart_link{
+                background: url('../images/icon_menu/like.svg') no-repeat center;
+            }
+            .account_link{
+                background: url('../images/icon_menu/account.svg') no-repeat center;
+            }
+        }
+        .main_menu{
+            grid-area: 2 / 3 / 3 / 6;
+            @include flex(row, space-between, center);
+            a{
+                padding: 10px;
+                letter-spacing: 1px;  
+                &:hover{
+                    background: red;
+                }     
+            }
+        }
+        
+    }
+    .burger_wrap, .sidebar_fon{
+        display: none;
+    }
+
+    #women_link:hover .wrap_down_menu{
+        display: block !important;
+        .women_section_down_menu{
+            display: block !important;
+        }
+    }
+
+
+
+
+
+
+}
+
+@media screen and (max-width: 1100px) {
+    .wrap_down_menu{
+        display: none;
+    }
+    .burger_wrap{       
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr); 
+
+        .logo{
+            height: 100px;
+            background: $menu_fon;
+            grid-area: 1 / 1 / 2 / 2;
+            @include flex(row, normal, center);
+            padding-left: 10px;
+            img{
+                width: 75px;
+                height: 75px;
+            }
+        }
+        #toggle_btn{
+            width: 100%;
+            height: 100px;
+            background: $menu_fon;
+            @include flex(row, flex-end, center);
+            grid-area: 1 / 2 / 2 / 3;
+            
+            // ============== cross =================
+            .container {
+                display: inline-block;
+                cursor: pointer;
+                margin-right: 20px;
+            }
+            .bar1, .bar2, .bar3 {
+                width: 35px;
+                height: 5px;
+                background-color: $white;
+                margin: 6px 0;
+                transition: 0.4s;
+            }            
+            .change .bar1 {
+                -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+                transform: rotate(-45deg) translate(-9px, 6px);
+            }            
+            .change .bar2 {opacity: 0;}            
+            .change .bar3 {
+                -webkit-transform: rotate(45deg) translate(-8px, -8px);
+                transform: rotate(45deg) translate(-8px, -8px);
+            }
+            //   ================= end =============== 
+        }
+        .search{
+            margin: 0 15px;
+            grid-area: 2 / 1 / 3 / 3;
+            label{
+                width: 100%;
+                @include flex(row, center, center);
+                input{ width: 100%;}
+                .icon_cross{            
+                    right: 10px;
+                }
+                .icon_loop{
+                    left: 10px;
+                }
+            }
+        }
+    }
+    .desktop_wrap{
+        display: none;
+    }
+}

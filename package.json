@@ -1,0 +1,26 @@
+{
+  "name": "artemy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DewFill/artemy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DewFill/artemy/issues"
+  },
+  "homepage": "https://github.com/DewFill/artemy#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.5.14"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "showdown": "^2.1.0"
+  }
+}

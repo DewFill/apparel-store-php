@@ -1,0 +1,81 @@
+@use "../../additional_styles/Objects" as *;
+@use "../../additional_styles/Colors" as *;
+
+.wrap_footer {
+  width: 100%;
+  height: auto;
+  background: $menu_fon;
+  height: 300px;
+  padding-top: 50px;
+  color: white;
+  display: grid;
+  grid-template-columns: 0.8fr;
+  justify-content: center;
+
+  .main_footer {
+    width: 100%;
+    @include flex(row, normal, normal);
+
+    .section_menu {
+      margin-right: 100px;
+    }
+
+    .name_help {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .links_foot {
+      @include flex(column, flex-start, normal);
+
+      & > a {
+        margin-top: 1.2rem;
+      }
+    }
+
+    .follow_us {
+      margin-left: auto;
+
+      & > * {
+        margin-bottom: 40px;
+      }
+    }
+
+    .know_more {
+      cursor: pointer;
+      @include flex(row, normal, center);
+
+      .arrow_next {
+        display: block;
+        width: 50px;
+        height: 40px;
+        background: url('/static/image/icon_product/arrow_left_ico.svg') no-repeat center;
+      }
+    }
+  }
+
+  .copiright {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+@media screen and (max-width: 1100px) and (min-width: 768px) {
+  .wrap_footer {
+    height: 30px;
+
+    .main_footer > * {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 786px) {
+  main {
+    margin-bottom: 120px;
+  }
+  .wrap_footer {
+    display: none;
+  }
+}

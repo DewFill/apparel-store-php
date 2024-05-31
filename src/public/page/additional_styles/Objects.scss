@@ -1,0 +1,64 @@
+@use "../additional_styles/Colors" as *;
+*{
+    margin: 0;
+    padding: 0;
+}
+//************ Mixins ***********// 
+@mixin flex($direction, $justify, $align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin Buttons($color_bg, $color_txt, $width){
+    color: $color_txt;
+    background: $color_bg;
+    width: $width;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    text-align: center;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+
+
+//********* Main Code **************//
+body{
+    background: $white;
+    font-family: "Roboto", sans-serif;
+}
+.grid_wrap{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(320px, 1440px));
+    justify-content: center;
+}
+.none{ display: none;}
+.bold{
+    font-weight: bold;
+}
+.link{
+    text-decoration: underline;
+    color: $white;
+}
+input:not([type=submit]){
+    color: $black_text;
+    background: $white;
+    border: 1px solid $border_input_color;
+    height: 42px;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px; 
+    padding-left: 15px;
+    &::placeholder{ color: $menu_fon; }
+}
+.h1{
+    font-size: 20px;
+    letter-spacing: 0.05em;
+}
+a{
+    text-decoration: none;
+    color: $white;
+}

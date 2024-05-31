@@ -1,0 +1,33 @@
+.error {
+    color: red;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+main>div {
+    max-width: 90%;
+}
+
+main input, main select {
+    color: #16161a;
+    background: white;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    text-align: center;
+    letter-spacing: 1px;
+    cursor: pointer;
+    height: 40px !important;
+    border-color: #16161a !important;
+
+    margin-bottom: 10px;
+}
+
+main input[type=submit] {
+    font-weight: bolder;
+}

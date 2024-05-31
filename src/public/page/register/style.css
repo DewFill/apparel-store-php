@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(251, 253, 255);
+  font-family: "Roboto", sans-serif;
+}
+
+.grid_wrap {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(320px, 1440px));
+  justify-content: center;
+}
+
+.none {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: underline;
+  color: rgb(251, 253, 255);
+}
+
+input:not([type=submit]) {
+  color: #181818;
+  background: rgb(251, 253, 255);
+  border: 1px solid #B2ABB2;
+  height: 42px;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+input:not([type=submit])::placeholder {
+  color: #16161a;
+}
+
+.h1 {
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(251, 253, 255);
+}
+
+body {
+  background: #16161a;
+  overflow: hidden;
+}
+
+.grid_wrap_sign {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(320px, 1fr));
+  grid-template-rows: repeat(1, minmax(360px, 100vh));
+  justify-content: center;
+}
+
+.main_wrap {
+  height: 100vh;
+}
+.main_wrap p {
+  color: rgb(251, 253, 255);
+}
+.main_wrap .image {
+  height: 100vh;
+  background-size: cover;
+}
+.main_wrap .image img {
+  object-fit: cover;
+  height: 100vh;
+  width: 50vw;
+}
+.main_wrap .auth_form {
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: center;
+}
+.main_wrap .auth_form .h1 {
+  margin-bottom: 30px;
+}
+.main_wrap .auth_form img {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 50px;
+}
+.main_wrap .auth_form form {
+  height: auto;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  align-items: flex-start;
+}
+.main_wrap .auth_form form input {
+  margin-bottom: 20px;
+}
+.main_wrap .auth_form form .link {
+  margin-bottom: 20px;
+}
+.main_wrap .auth_form form #auth_btn {
+  color: rgb(251, 253, 255);
+  background: #CF1B24;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+@media (min-width: 1201px) {
+  .main_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: normal;
+  }
+
+  .auth_form {
+    width: 55%;
+  }
+  .auth_form form {
+    width: 360px;
+  }
+}
+@media (max-width: 1200px) {
+  .main_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: normal;
+  }
+
+  .image {
+    display: none;
+  }
+
+  form {
+    max-width: 25rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
