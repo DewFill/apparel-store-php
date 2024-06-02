@@ -33,3 +33,7 @@ make up
 ```shell
 make clear
 ```
+
+___
+# Notice
+For educational purpoces only. This code is not tested and potentially vulnerable. Don't use in production!
